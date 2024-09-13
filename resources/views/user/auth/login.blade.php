@@ -1,4 +1,4 @@
-@extends('user.layouts.authapp')
+@extends('user.layouts.app')
 
 @section('content')
     <!--authentication-->

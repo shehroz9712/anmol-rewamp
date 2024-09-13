@@ -53,13 +53,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:30'],
-            'last_name' => ['required', 'string', 'max:30'],
-            'company_name' => ['required', 'string', 'max:30'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:15'], // Adjust max length as needed
-            'image' => ['nullable', 'max:2048'], // Adjust max size as needed (2048 KB = 2 MB)
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], // Removed 'lowercase'
+            'password' => ['min:8', 'required', 'confirmed'],
         ]);
     }
 
@@ -73,12 +69,9 @@ class RegisterController extends Controller
     {
         // $imagePath = uploadImage($data['image'], 'logos');
         return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
+            'name' => $data['name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
-            'company_name' => $data['company_name'],
-            'image' => 'logohere.png',
             'password' => Hash::make($data['password']),
         ]);
     }

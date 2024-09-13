@@ -5,16 +5,25 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('user.')->group(function () {
     Auth::routes();
+    Route::get('auth/google', 'GoogleAuthController@redirect')->name('google-auth');
+    Route::get('auth/google/call-back',  'GoogleAuthController@callbackGoogle');
+    Route::get('/guest-home',  'GuestController@index')->name('guest-home');
+
+
+    Route::get('/GuestLogout', 'GuestController@GuestLogout')->name('GuestLogout');
+    Route::post('/Convert2User', 'GuestController@Convert2User')->name('Convert2User');
 
     Route::middleware('auth')->group(function () {
 
+        Route::get('/home', 'HomeController@index')->name('index');
 
 
 
         Route::get('/', 'IndexController@index')->name('index');
 
 
-
+        Route::resource('/events', 'EventController');
+        Route::get('/events/invoice/print/{id}', 'EventController@print_invoice')->name('event.print.invoice');
 
 
 
@@ -45,7 +54,7 @@ Route::name('user.')->group(function () {
 
 
         //menu
-        
+
         Route::get('/menu/items/{eventId?}', 'menu@items')->name('custom.menu');
         Route::post('/menu/submit', 'menu@submit')->name('menu.submit');
         Route::get('/getNewDishes', 'menu@getNewDishes')->name('menu.getNewDishes');
@@ -67,24 +76,11 @@ Route::name('user.')->group(function () {
         //Events
         Route::get('/calender/{type?}', 'EventController@calender')->name('calender.index');
 
-        Route::get('/events', 'EventController@index')->name('events.index');
-        Route::get('/events-create', 'EventController@create')->name('events.create');
-        Route::post('/events', 'EventController@store')->name('events.store');
-        Route::get('/events/invoice/show/{id}', 'EventController@invoice')->name('events.invoice.show');
-        Route::get('/events/invoice/print/{id}', 'EventController@print_invoice')->name('event.print.invoice');
 
         Route::get('/service/styling/{eventId?}', 'ServiceController@create')->name('service.styling');
         Route::get('/edit/service/{serviceid}', 'ServiceController@edit')->name('service.styling.edit');
         Route::post('/service/styling', 'ServiceController@store')->name('service.store');
         Route::post('/update/service', 'ServiceController@update')->name('service.update');
-
-        Route::get('/events/show/{id}', 'EventController@show')->name('events.show');
-
-        Route::get('/events/edit/{id}', 'EventController@edit')->name('events.edit');
-
-        Route::put('/events', 'EventController@update')->name('events.update');
-
-        Route::delete('/events/{event}', 'EventController@destroy')->name('events.destroy');
 
         //customer venue
 

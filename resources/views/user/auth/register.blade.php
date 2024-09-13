@@ -17,40 +17,31 @@
                                     @csrf
 
                                     <div class="col-6">
-                                        <label for="inputFirstName"
-                                            class="form-label @error('first_name') is-invalid @enderror">First Name</label>
-                                        <input type="text" class="form-control" name="first_name" id="inputFirstName"
-                                            placeholder="John" value="{{ old('first_name') }}">
-                                        @error('first_name')
+                                        <label for="inputFirstName" class="form-label @error('name') is-invalid @enderror">
+                                            Name</label>
+                                        <input type="text" class="form-control" name="name" id="inputFirstName"
+                                            placeholder="John" value="{{ old('name') }}">
+                                        @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
 
+
                                     <div class="col-6">
-                                        <label for="inputLastName"
-                                            class="form-label @error('last_name') is-invalid @enderror">Last Name</label>
-                                        <input type="text" class="form-control" name="last_name" id="inputLastName"
-                                            placeholder="Doe" value="{{ old('last_name') }}">
-                                        @error('last_name')
+                                        <label for="inputPhone"
+                                            class="form-label @error('phone') is-invalid @enderror">Phone</label>
+                                        <input type="text" class="form-control" name="phone" id="inputPhone"
+                                            placeholder="123-456-7890" value="{{ old('phone') }}">
+                                        @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
-                                    <div class="col-6">
-                                        <label for="inputLastName"
-                                            class="form-label @error('company_name') is-invalid @enderror">Company
-                                            Name</label>
-                                        <input type="text" class="form-control" name="company_name" id="inputLastName"
-                                            placeholder="abc" value="{{ old('company_name') }}">
-                                        @error('company_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+
+
 
                                     <div class="col-6">
                                         <label for="inputEmailAddress"
@@ -90,29 +81,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
-                                        <label for="inputPhone"
-                                            class="form-label @error('phone') is-invalid @enderror">Phone</label>
-                                        <input type="text" class="form-control" name="phone" id="inputPhone"
-                                            placeholder="123-456-7890" value="{{ old('phone') }}">
-                                        @error('phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-
-                                    {{-- <div class="col-6">
-                                        <label for="inputImage"
-                                            class="form-label @error('image') is-invalid @enderror">Profile Image</label>
-                                        <input type="file" class="form-control" name="image" id="inputImage">
-                                        @error('image')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div> --}}
-
+                                
 
                                     <div class="col-12">
                                         <div class="d-grid">

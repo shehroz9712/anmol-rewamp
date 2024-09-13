@@ -13,11 +13,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name', 50);  // Increased length to 50
-            $table->string('last_name', 50);   // Increased length to 50
-            $table->string('company_name', 100)->nullable(); // Increased length to 100
+            $table->string('name', 50);  // Increased length to 50
             $table->string('email', 100)->unique();  // Added length constraint
-            $table->string('image', 255)->nullable();  // Added length constraint
             $table->string('phone', 15);  // Added length constraint
             $table->string('password', 255);  // Added length constraint for hashed password
             $table->timestamp('email_verified_at')->nullable();
